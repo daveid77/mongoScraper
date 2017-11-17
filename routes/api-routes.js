@@ -6,6 +6,7 @@ module.exports = function(app) {
 
   // Route for scraping
   app.get("/scrape", function(req, res) {
+
     axios.get("http://talkingpointsmemo.com/news").then(function(response) {
       
       var $ = cheerio.load(response.data);
@@ -46,8 +47,19 @@ module.exports = function(app) {
           .catch(function(err) {
             res.json(err);
         });
+        // db.Article
+        //   .create(result)
+        //   .then(function(dbArticle) {
+        //     res.send("Scrape Complete");
+        //   })
+        //   .catch(function(err) {
+        //     res.json(err);
+        // });
+
       });
+      
     });
+
   });
 
   // Route for all Articles

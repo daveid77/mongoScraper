@@ -12,18 +12,13 @@ Week Nine Homework Part 1: [All the News That's Fit to Scrape](http://ucb.bootca
     npm install 
     ```
 
-3. Create `mongoScraper_db` database in Mongo: 
-
-    ```
-    mongo
-    use mongoScraper_db
-    ```
-
-4. Start server to create tables from Mongoose models:
+2. Start server (local environment only):
 
     ```
     node server.js
     ```
+
+3. Load local or Heroku deployment (see below), then initiate scrape in browser to create Mongo database and collections from Mongoose models.
 
 ## Available Node Commands and URLs
 
