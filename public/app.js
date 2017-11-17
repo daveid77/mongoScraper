@@ -1,13 +1,18 @@
 // Grab the articles as a json
 $.getJSON("/articles", function(data) {
-  for (var i = 0; i < data.length; i++) {
-    var article = "<div class=\"article-wrapper\">";
-    article += "<img src=\"" + data[i].image + "\">";
-    article += "<h4 data-id='" + data[i]._id + "'>" + data[i].title + "</h4>";
-    article += "<p>" + data[i].content + "</p>";
-    article += "<a href=\"" + data[i].link + "\" target=\"_blank\">Read More</a>";
-    article += "</div>";
-    $("#articles").append(article);
+  if (data.length) {
+    $("#articles").append('<h3>Talking Points Memo headlines:</h3>');
+    for (var i = 0; i < data.length; i++) {
+      var article = "<div class=\"article-wrapper\">";
+      article += "<img src=\"" + data[i].image + "\">";
+      article += "<h4 data-id='" + data[i]._id + "'>" + data[i].title + "</h4>";
+      article += "<p>" + data[i].content + "</p>";
+      article += "<a href=\"" + data[i].link + "\" target=\"_blank\">Read More</a>";
+      article += "</div>";
+      $("#articles").append(article);
+    }
+  } else {
+    $("#articles").append('<h3>There are no scraped articles yet :-(</h3>');
   }
 });
 

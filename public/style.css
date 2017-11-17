@@ -1,5 +1,5 @@
 body { 
-  background: #F2F6D0; 
+  background: #eee; 
 }
 #wrapper {
   width: 960px;
@@ -8,9 +8,8 @@ body {
 }
 #articles {
   display: inline-block;
-  overflow: auto;
   width: 60%;
-  /*height: 700px;*/
+  overflow: auto;
 }
 .article-wrapper {
   margin: 15px 0;
