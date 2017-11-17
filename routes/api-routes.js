@@ -6,20 +6,29 @@ module.exports = function(app) {
 
   // Route for scraping
   app.get("/scrape", function(req, res) {
-    axios.get("http://www.echojs.com/").then(function(response) {
+    axios.get("http://talkingpointsmemo.com/news").then(function(response) {
       
       var $ = cheerio.load(response.data);
 
-      $("article h2").slice(0, 5).each(function(i, element) {
+      $(".CategoryTitle__Main .TypicalArticle").slice(0, 5).each(function(i, element) {
         
         var result = {};
 
         result.title = $(this)
-          .children("a")
+          .find(".TypicalArticle__Title a")
           .text();
+
         result.link = $(this)
-          .children("a")
+          .find(".TypicalArticle__Title a")
           .attr("href");
+
+        result.image = $(this)
+          .find(".TypicalArticle__Image img")
+          .attr("src");
+
+        result.content = $(this)
+          .find(".TypicalArticle__Content p")
+          .text();
 
         db.Article
           .create(result)

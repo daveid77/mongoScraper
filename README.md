@@ -34,7 +34,7 @@ Week Nine Homework Part 1: [All the News That's Fit to Scrape](http://ucb.bootca
 
 **Heroku Deployment:** 
 
-* Load [https://mongoScraper-davidm.herokuapp.com/](https://mongoScraper-davidm.herokuapp.com/)
+* Load [https://mongoscraper-davidm.herokuapp.com/](https://mongoscraper-davidm.herokuapp.com/)
 
 ## Misc Notes
 

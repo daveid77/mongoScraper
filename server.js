@@ -22,7 +22,8 @@ app.use(express.static("public"));
 
 // MongoDB, leverage ES6 Promises
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/mongoScraper_db", {
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoScraper2_db";
+mongoose.connect(MONGODB_URI, {
   useMongoClient: true
 });
 
