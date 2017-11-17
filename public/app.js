@@ -8,6 +8,7 @@ $.getJSON("/articles", function(data) {
       article += "<h4 data-id='" + data[i]._id + "'>" + data[i].title + "</h4>";
       article += "<p>" + data[i].content + "</p>";
       article += "<a href=\"" + data[i].link + "\" target=\"_blank\">Read More</a>";
+      article += "<div><button style=\"margin-top: -24px; float: right;\">Add to Saved Articles</button></div>";
       article += "</div>";
       $("#articles").append(article);
     }
