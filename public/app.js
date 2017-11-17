@@ -18,6 +18,7 @@ $.getJSON("/articles", function(data) {
 
 
 $(document).on("click", "h4", function() {
+  console.log('h4 click');
   $("#notes").empty();
   var thisId = $(this).attr("data-id");
 

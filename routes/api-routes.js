@@ -31,7 +31,15 @@ module.exports = function(app) {
           .text();
 
         db.Article
-          .create(result)
+          .update(
+            { title: result.title },
+             {
+                title: result.title,
+                link: result.link,
+                image: result.image,
+                content: result.content,
+             },
+             { upsert: true })
           .then(function(dbArticle) {
             res.send("Scrape Complete");
           })
