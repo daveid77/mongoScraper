@@ -39,6 +39,7 @@ module.exports = function(app) {
                 link: result.link,
                 image: result.image,
                 content: result.content,
+                saved: false
              },
              { upsert: true })
           .then(function(dbArticle) {
