@@ -38,6 +38,7 @@ Week Nine Homework Part 1: [All the News That's Fit to Scrape](http://ucb.bootca
 
 ## Misc Notes
 
+* New scrapes do not populate database with duplicate articles, based on uniqueness of article titles. 
 * Github repo master branch pushes autodeploy to Heroku (sweet).
 
 ## Author
