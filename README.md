@@ -27,9 +27,13 @@ Week Nine Homework Part 1: [All the News That's Fit to Scrape](http://ucb.bootca
 * Run `node server.js` 
 * Then load [http://localhost:5050/](http://localhost:5050/)
 
+* Clear database: `http://localhost:5050/delete` 
+
 **Heroku Deployment:** 
 
 * Load [https://mongoscraper-davidm.herokuapp.com/](https://mongoscraper-davidm.herokuapp.com/)
+
+* Clear database: `https://mongoscraper-davidm.herokuapp.com/delete` 
 
 ## Misc Notes
 
