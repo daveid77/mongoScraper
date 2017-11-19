@@ -1,16 +1,18 @@
-var db = require("../models");
-var axios = require("axios");
+// Dependencies
+var request = require("request");
 var cheerio = require("cheerio");
 
+var db = require("../models");
+
+// Routes
 module.exports = function(app) {
 
   // Route for scraping
   app.get("/scrape", function(req, res) {
-
-    axios.get("http://talkingpointsmemo.com/news").then(function(response) {
+    request("http://talkingpointsmemo.com/news", function(error, response, html) {
       
-      var $ = cheerio.load(response.data);
-
+      var $ = cheerio.load(html);
+      
       $(".CategoryTitle__Main .TypicalArticle").slice(0, 5).each(function(i, element) {
         
         var result = {};
@@ -31,7 +33,8 @@ module.exports = function(app) {
           .find(".TypicalArticle__Content p")
           .text();
 
-        db.Article
+        if (result.title && result.link) {
+          db.Article
           .update(
             { title: result.title },
              {
@@ -41,26 +44,20 @@ module.exports = function(app) {
                 content: result.content,
                 saved: false
              },
-             { upsert: true })
-          .then(function(dbArticle) {
-            res.send("Scrape Complete");
-          })
-          .catch(function(err) {
-            res.json(err);
-        });
-        // db.Article
-        //   .create(result)
-        //   .then(function(dbArticle) {
-        //     res.send("Scrape Complete");
-        //   })
-        //   .catch(function(err) {
-        //     res.json(err);
-        // });
-
+             { upsert: true },
+          function(err, inserted) {
+            if (err) {
+              console.log(err);
+            }
+            else {
+              console.log(inserted);
+            }
+          });
+        }
       });
-      
     });
 
+    res.send("Scrape Complete");
   });
 
   // Route for all Articles

@@ -3,10 +3,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
-
-// Scraping tools
-var axios = require("axios");
-var cheerio = require("cheerio");
+var expressHandleBars = require("express-handlebars");
 
 // Models
 var db = require("./models");
@@ -28,6 +25,8 @@ mongoose.connect(MONGODB_URI, {
 });
 
 // Routes
+// var routes = require('./controllers/scraper_controller.js');
+// app.use('/', routes);
 require("./routes/api-routes.js")(app);
 
 // Start server
