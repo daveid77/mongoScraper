@@ -20,7 +20,7 @@ $.getJSON("/articles", function(data) {
 
 $(document).on("click", "h4", function() {
   console.log('h4 click');
-  $("#notes").empty();
+  $("#comments").empty();
   var thisId = $(this).attr("data-id");
 
   $.ajax({
@@ -29,21 +29,21 @@ $(document).on("click", "h4", function() {
   })
     .done(function(data) {
       console.log(data);
-      $("#notes").append("<h2>" + data.title + "</h2>");
-      $("#notes").append("<input id='titleinput' name='title' >");
-      $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
-      $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
+      $("#comments").append("<h2>" + data.title + "</h2>");
+      $("#comments").append("<input id='titleinput' name='title' >");
+      $("#comments").append("<textarea id='bodyinput' name='body'></textarea>");
+      $("#comments").append("<button data-id='" + data._id + "' id='savecomment'>Save Comment</button>");
 
-      // If there's a note in the article
-      if (data.note) {
-        $("#titleinput").val(data.note.title);
-        $("#bodyinput").val(data.note.body);
+      // If there's a comment in the article
+      if (data.comment) {
+        $("#titleinput").val(data.comment.title);
+        $("#bodyinput").val(data.comment.body);
       }
     });
 });
 
-// When you click the savenote button
-$(document).on("click", "#savenote", function() {
+// When you click the savecomment button
+$(document).on("click", "#savecomment", function() {
   var thisId = $(this).attr("data-id");
 
   $.ajax({
@@ -52,13 +52,13 @@ $(document).on("click", "#savenote", function() {
     data: {
       // Value taken from title input
       title: $("#titleinput").val(),
-      // Value taken from note textarea
+      // Value taken from comment textarea
       body: $("#bodyinput").val()
     }
   })
     .done(function(data) {
       console.log(data);
-      $("#notes").empty();
+      $("#comments").empty();
     });
 
   $("#titleinput").val("");
