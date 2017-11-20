@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+
+    <h3 class="panel-title">
+      {{title}}
+    </h3>
+
+  </div>
+  <div class="panel-body">
+
+    <img src="{{image}}" class="img-rounded img-responsive">
+
+    {{#unless saved}}
+      <button class="btn btn-md btn-primary change-saved" data-id="{{id}}">Save Article</button>
+    {{/unless}}
+
+    <p>
+      {{content}}
+    </p>
+
+    <p>
+      <a href="{{link}}" target="_blank">Read More</a>
+    </p>
+
+  </div>
+</div>

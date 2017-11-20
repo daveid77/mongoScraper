@@ -12,10 +12,17 @@ var db = require("./models");
 var app = express();
 var PORT = process.env.PORT || 5050;
 
-// Middleware
+// Configure middleware
+// Use morgan logger for logging requests
 app.use(logger("dev"));
+// Use body-parser for handling form submissions
 app.use(bodyParser.urlencoded({ extended: false }));
+// Use express.static to serve the public folder as a static directory
 app.use(express.static("public"));
+
+// Handlebars template
+app.engine("handlebars", expressHandleBars({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 // MongoDB, leverage ES6 Promises
 mongoose.Promise = Promise;

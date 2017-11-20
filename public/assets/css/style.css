@@ -1,6 +1,19 @@
 body { 
   background: #eee; 
 }
+/* BOOTSTRAP*/
+.panel-body img {
+  width: 100px;
+  padding: 0 15px 0 0;
+  float: left;
+}
+.panel-body button {
+  /*width: 100px;
+  padding: 0 15px 0 0;*/
+  float: right;
+}
+
+/* PRE-BOOTSRAP */
 #wrapper {
   width: 960px;
   margin-left: auto;
@@ -16,7 +29,7 @@ body {
   overflow: auto;
 }
 .article-wrapper img {
-  /*width: 100px;*/
+  /* width: 100px;*/
   padding: 0 15px 0 0;
   float: left;
 }

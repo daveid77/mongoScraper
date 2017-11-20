@@ -1,5 +1,5 @@
 // Grab the articles as a json
-$.getJSON("/articles", function(data) {
+$.get("/articles", function(data) {
   if (data.length) {
     $("#articles").append('<h3>Talking Points Memo headlines:</h3>');
     for (var i = 0; i < data.length; i++) {

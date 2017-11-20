@@ -7,6 +7,17 @@ var db = require("../models");
 // Routes
 module.exports = function(app) {
 
+  app.get("/", function(req, res){
+    db.Article
+    .find({saved: false})
+    .then(function(articles){
+      res.render("index", {articles: articles, saved: false});
+    })
+    .catch(function(err){
+      res.json(err);
+    });
+  });
+
   // Route for scraping
   app.get("/scrape", function(req, res) {
     request("http://talkingpointsmemo.com/news", function(error, response, html) {
@@ -116,7 +127,7 @@ module.exports = function(app) {
     db.Comment
       .remove()
       .then(function(dbComment) {
-        res.json(dbArticle);
+        res.json(dbComment);
       })
       .catch(function(err) {
         res.json(err);
